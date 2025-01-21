@@ -58,12 +58,13 @@ module.exports = {
                             },
                             env: {
                                 mode: 'usage',
-                                coreJs: 3, // TODO ?????
+                                coreJs: 3,
                                 targets: [
-                                    'chrome >= 87',
-                                    'edge >= 88',
-                                    'firefox >= 78',
-                                    'safari >= 14'
+                                    'chrome >= 49',
+                                    'edge >= 14',
+                                    'firefox >= 45',
+                                    'safari >= 10',
+                                    'ie >= 11'
                                 ]
                             }
                         }

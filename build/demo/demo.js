@@ -16,11 +16,15 @@ return cachedModule.exports;
 }
 // Create a new module (and put it into the cache)
 var module = (__webpack_module_cache__[moduleId] = {
+id: moduleId,
+loaded: false,
 exports: {}
 });
 // Execute the module function
-__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 
+// Flag the module as loaded
+module.loaded = true;
 // Return the exports of the module
 return module.exports;
 
@@ -30,6 +34,21 @@ return module.exports;
 __webpack_require__.m = __webpack_modules__;
 
 /************************************************************************/
+// webpack/runtime/compat_get_default_export
+(() => {
+// getDefaultExport function for compatibility with non-ESM modules
+__webpack_require__.n = function (module) {
+	var getter = module && module.__esModule ?
+		function () { return module['default']; } :
+		function () { return module; };
+	__webpack_require__.d(getter, { a: getter });
+	return getter;
+};
+
+
+
+
+})();
 // webpack/runtime/define_property_getters
 (() => {
 __webpack_require__.d = function(exports, definition) {
@@ -55,6 +74,20 @@ __webpack_require__.e = function (chunkId) {
 };
 
 })();
+// webpack/runtime/esm_module_decorator
+(() => {
+__webpack_require__.hmd = function (module) {
+    module = Object.create(module);
+    if (!module.children) module.children = [];
+    Object.defineProperty(module, 'exports', {
+        enumerable: true,
+        set: function () {
+            throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+        }
+    });
+    return module;
+};
+})();
 // webpack/runtime/get css chunk filename
 (() => {
 // This function allow to reference chunks
@@ -73,9 +106,21 @@ __webpack_require__.e = function (chunkId) {
           // return url for filenames not based on template
           
           // return url for filenames based on template
-          return "demo/static/js/" + chunkId + "." + {"src_modules_App_index_js": "720f1c9f","vendors-node_modules_pnpm_react_17_0_2_node_modules_react_jsx-runtime_js": "f0c7a770",}[chunkId] + ".chunk.js";
+          return "demo/static/js/" + chunkId + "." + {"src_modules_App_index_js": "d79042ec","vendors-node_modules_pnpm_react_17_0_2_node_modules_react_jsx-runtime_js-node_modules_pnpm_co-88768b": "9c5ca879",}[chunkId] + ".chunk.js";
         };
       
+})();
+// webpack/runtime/global
+(() => {
+__webpack_require__.g = (function () {
+	if (typeof globalThis === 'object') return globalThis;
+	try {
+		return this || new Function('return this')();
+	} catch (e) {
+		if (typeof window === 'object') return window;
+	}
+})();
+
 })();
 // webpack/runtime/has_own_property
 (() => {
@@ -283,7 +328,7 @@ var exports = __webpack_exports__;
 
 var moduleMap = {
   "./App": () => {
-return Promise.all([__webpack_require__.e("vendors-node_modules_pnpm_react_17_0_2_node_modules_react_jsx-runtime_js"), __webpack_require__.e("src_modules_App_index_js")]).then(() => (() => (__webpack_require__(/*! ./src/modules/App/index.js */ "./src/modules/App/index.js"))));
+return Promise.all([__webpack_require__.e("vendors-node_modules_pnpm_react_17_0_2_node_modules_react_jsx-runtime_js-node_modules_pnpm_co-88768b"), __webpack_require__.e("src_modules_App_index_js")]).then(() => (() => (__webpack_require__(/*! ./src/modules/App/index.js */ "./src/modules/App/index.js"))));
 },
 };
 var get = function(module, getScope) {
