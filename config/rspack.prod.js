@@ -39,6 +39,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(jsx?|tsx?)$/,
+                exclude: /node_modules[\\/]core-js/,
                 use: [
                     {
                         loader: 'builtin:swc-loader',
@@ -56,6 +57,7 @@ module.exports = {
                                     }
                                 }
                             },
+                            isModule: 'unknown',
                             env: {
                                 mode: 'usage',
                                 coreJs: 3,
@@ -64,7 +66,7 @@ module.exports = {
                                     'edge >= 14',
                                     'firefox >= 45',
                                     'safari >= 10',
-                                    'ie >= 11'
+                                    'ie >= 6'
                                 ]
                             }
                         }
